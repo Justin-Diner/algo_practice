@@ -4,19 +4,12 @@ class Solution {
      * @returns {string}
      */
     encode(strs)  {
-        let code = '';
+        let encoded = '';
 
         for (let word of strs) {
-            let encodedWord = '';
-            if (!word) {
-                encodedWord = `0#`
-            } else {
-                const length = String(word.length);
-                encodedWord = `${length}#${word}`
-            }
-            code += encodedWord;
+            encoded += `${word.length}#${word}`;
         }
-        return code;
+        return encoded;
     }
 
     /**
@@ -24,8 +17,7 @@ class Solution {
      * @returns {string[]}
      */
     decode(str) {
-        const decoded = [];
-        
+        const answer = [];
         let i = 0;
 
         while (i < str.length) {
@@ -33,14 +25,12 @@ class Solution {
             while (str[j] !== '#') {
                 j++;
             }
-
-            let length = parseInt(str.substring(i, j));
-            i = j + 1;
+            const length = parseInt(str.substring(i, j));
+            i = j+1;
             j = i + length;
-
-            decoded.push(str.substring(i, j))
+            answer.push(str.substring(i, j));
             i = j;
         }
-        return decoded;
+        return answer;
     }
 }
