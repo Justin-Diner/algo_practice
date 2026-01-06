@@ -68,7 +68,7 @@ class Solution {
     }
 }
 
-// O(n) time O(n) space
+// O(n) time O(1) space
 productExceptSelf(nums) {
     const n = nums.length;
     const res = new Array(n).fill(1);
