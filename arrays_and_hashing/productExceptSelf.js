@@ -69,6 +69,9 @@ class Solution {
 }
 
 // O(n) time O(1) space
+// Build prefix information in one pass
+// Maintain postfix information in reverse
+// Combine them into the result array
 productExceptSelf(nums) {
     const n = nums.length;
     const res = new Array(n).fill(1);
