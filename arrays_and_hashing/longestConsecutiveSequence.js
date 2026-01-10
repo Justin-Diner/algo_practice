@@ -17,7 +17,13 @@ longestConsecutive(nums) {
 }
 
 // Set
-
+// O*n) time complexity O(n) space complexity for the set. 
+// A couple things to remember. Create the set immediately from nums. 
+// You iterate through the set once. 
+// You're really only looking for numbers that don't have a left neightbor because they start the sequence.
+// You find the length of the sequence from there with your loop. 
+// Return the longest. 
+// If you're part of the sequence, we don't care about evaluating you because we're only looking for numbers that don't have a left neightbor because they start the sequence.
 longestConsecutive(nums) {
     const numSet = new Set(nums);
     let longest = 0;
