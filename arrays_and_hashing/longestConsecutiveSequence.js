@@ -1,3 +1,8 @@
+// O(n) time complexity O(n) space complexity for the map. 
+// You iterate through the array once. 
+// You're using a map to store the length of the sequence for each number. 
+// You only really care about the sequence numbers behind and in front of you. 
+// Once you iterate all the way through, you will know what was the longest sequence. 
 longestConsecutive(nums) {
     const mp = new Map();
     let res = 0;
