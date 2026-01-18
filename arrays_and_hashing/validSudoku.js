@@ -1,4 +1,5 @@
 // Valid Sudoku 
+// O(n^2) time O(n^2) space
 isValidSudoku(board) {
     const rows = new Map();
     const cols = new Map();
