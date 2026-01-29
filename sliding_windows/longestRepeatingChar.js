@@ -11,6 +11,7 @@ characterReplacement(s, k) {
             }
 
             // this is the window size - the count of the character were looking for 
+            // this is the invarient
             while (r - l + 1 - count > k) {
                 if (s[l] === c) {
                     count--;
