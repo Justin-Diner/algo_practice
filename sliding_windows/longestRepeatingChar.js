@@ -1,26 +1,35 @@
 characterReplacement(s, k) {
-    let res = 0;
-    let charSet = new Set(s);
+    // establish longest
+    let longest = 0
+    // establish new charSet
+    let charSet = new Set(s); O(n)
 
-    for (let c of charSet) {
-        let count = 0,
-            l = 0;
-        for (let r = 0; r < s.length; r++) {
-            if (s[r] === c) {
+    // loop through charset O(m)
+    for (let char of charSet) {
+        // establish l = 0
+        let l = 0;
+        // establish count = 0
+        let count = 0;
+        // loop through r = 0
+        for (let r = 0; r < s.length; r++) { // O(n)
+            // determine whether to increase count or not
+            if (s[r] === char) {
                 count++;
             }
-
-            // this is the window size - the count of the character were looking for 
-            // this is the invarient
-            while (r - l + 1 - count > k) {
-                if (s[l] === c) {
+            // check if valid or invalid. 
+            while (r - l + 1 - count > k) { // O(n)
+                // if invalid 
+                // check if l is char. If it is decrease count
+                if (s[l] === char) {
                     count--;
                 }
+                // l++
                 l++;
             }
-
-            res = Math.max(res, r - l + 1);
+            longest = Math.max(longest, r - l + 1)
         }
     }
-    return res;
+    return longest;
 }
+
+// O(n*m) time, O(m) space
