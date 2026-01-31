@@ -12,7 +12,7 @@ characterReplacement(s, k) {
         let count = 0;
         // loop through r = 0
         for (let r = 0; r < s.length; r++) { // O(n)
-            // determine whether to increase count or not
+            // whether to increase count or not
             if (s[r] === char) {
                 count++;
             }
