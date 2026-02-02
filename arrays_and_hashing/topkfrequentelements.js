@@ -1,6 +1,5 @@
 // Sorting approach
 // O(n log n) time O(n) space
-
 const topKFrequentSorting = (nums, k) => {
     const frequents = new Map();
     for (let i = 0; i < nums.length; i++) {
