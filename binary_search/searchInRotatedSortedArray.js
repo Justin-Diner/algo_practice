@@ -57,3 +57,48 @@ class Solution {
         return 0;
     }
 }
+
+class Solution {
+    /**
+     * @param {number[]} nums
+     * @param {number} target
+    * @return {number}
+    */
+    search(nums, target) {
+        let l = 0;
+        let r = nums.length -1;
+
+        while (l < r) {
+            const m = Math.floor((l + r) / 2);
+            if (nums[m] > nums[r]) {
+                l = m + 1;
+            } else {
+                r = m;
+            }
+        }
+
+        const pivot = l;
+
+        const result = this.binarySearch(nums, target, 0, pivot - 1);
+        if (result !== -1) {
+            return result
+        }
+
+        return this.binarySearch(nums, target, pivot, nums.length - 1);
+    }
+
+    binarySearch(nums, target, l, r) {
+        while (l <= r) {
+            const mid = Math.floor((l + r) / 2);
+
+            if (nums[mid] > target) {
+                r =  mid - 1;
+            } else if (nums[mid] < target) {
+                l = mid + 1;
+            } else {
+                return mid;
+            }
+        }
+        return -1;
+    }
+}
