@@ -1,3 +1,6 @@
+// My Solution, O(log n) time complexity, O(1) space complexity.
+// Not the simplest solution, but it works. 
+// Will review for best solution.
 class Solution {
     /**
      * @param {number[]} nums
