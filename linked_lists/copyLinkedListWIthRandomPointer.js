@@ -45,3 +45,37 @@ class Solution {
         return answer[0];
     }
 }
+
+// class Node {
+//   constructor(val, next = null, random = null) {
+//       this.val = val;
+//       this.next = next;
+//       this.random = random;
+//   }
+// }
+
+class Solution {
+    /**
+     * @param {Node} head
+     * @return {Node}
+    */
+            copyRandomList(head) {
+                    const nodeToCopy = new Map();
+    
+                    let cur = head;
+                    while (cur) {
+                            nodeToCopy.set(cur, new Node(cur.val))
+                            cur = cur.next;
+                    }
+                    nodeToCopy.set(null, null);
+    
+                    cur = head;
+                    while (cur){
+                            const copy = nodeToCopy.get(cur);
+                            copy.next = nodeToCopy.get(cur.next);
+                            copy.random = nodeToCopy.get(cur.random);
+                            cur = cur.next;
+                    }
+                    return nodeToCopy.get(head);
+            }
+    }
