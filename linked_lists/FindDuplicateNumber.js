@@ -10,7 +10,7 @@ class Solution {
         while (true) {
             fast =  nums[nums[fast]];
             slow = nums[slow];
-            if (fast === slow) {
+            if (fast === slow) { 
                 break;
             }
         }
