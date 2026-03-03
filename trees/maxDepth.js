@@ -98,3 +98,24 @@ class Solution {
         return level;
     }
 }
+
+// My Solution
+class Solution {
+    /**
+     * @param {TreeNode} root
+     * @return {number}
+     */
+    maxDepth(root) {
+        let maxDepth = 0;
+        const dfs = (node, depth) => {
+            if (node === null) {
+                return;
+            }
+            maxDepth = Math.max(maxDepth, depth);
+            dfs(node.left, depth +1);
+            dfs(node.right, depth + 1);
+        }
+        dfs(root, 1);
+        return maxDepth;
+    }
+}
