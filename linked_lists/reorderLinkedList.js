@@ -47,3 +47,57 @@ class Solution {
         return head;
     }
 }
+
+// Optimal Time and Optimal Space O(n) time, O(1) space
+/**
+ * Definition for singly-linked list.
+ * class ListNode {
+ *     constructor(val = 0, next = null) {
+ *         this.val = val;
+ *         this.next = next;
+ *     }
+ * }
+ */
+
+class Solution {
+    /**
+     * @param {ListNode} head
+     * @return {void}
+     */
+    reorderList(head) {
+        let fast = head.next;
+        let slow = head;
+
+        // find middle point
+        while (fast && fast.next) {
+            fast = fast.next.next;
+            slow = slow.next;
+        }
+
+        // slow is end of first list
+        // reverse second list.
+
+        let secondHead = slow.next;
+        slow.next = null;
+        let prev = null;
+
+        while (secondHead !== null) {
+            let next = secondHead.next;
+            secondHead.next = prev;
+            prev = secondHead;
+            secondHead = next;
+        }
+
+        let firstList = head;
+        let secondList = prev;
+        while(secondList !== null) {
+            let firstNext = firstList.next;
+            let secondNext = secondList.next;
+            firstList.next = secondList;
+            secondList.next = firstNext;
+            firstList = firstNext;
+            secondList = secondNext;
+        }
+        return head;
+    }
+}
