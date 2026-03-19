@@ -61,3 +61,4 @@ class WordDictionary {
         }
         return curr.word;
     }
+}
