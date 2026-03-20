@@ -24,3 +24,31 @@ lengthOfLongestSubstring(s) {
     // return longest
     return longest;
 }
+
+// My solution
+class Solution {
+    /**
+     * @param {string} s
+     * @return {number}
+     */
+    lengthOfLongestSubstring(s) {
+        let longest = 0;
+        let window = new Set();
+        let l = 0;
+
+        for (let r = 0; r < s.length; r++) {
+            const c = s[r];
+            if (window.has(c)) {
+                while (s[l] !== c) {
+                    window.delete(s[l]);
+                    l++;
+                }
+                window.delete(s[l]);
+                l++;
+            } 
+            window.add(c);
+            longest = Math.max(longest, window.size);
+        }
+        return longest;
+    }
+}``
