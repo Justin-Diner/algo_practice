@@ -103,6 +103,9 @@ class Solution {
     }
 }
 
+// Two Pass Solution. Find the lowest index. Once that index is found, it is the pivot.
+// Find the area you need to search. 
+// Binary Search that area. 
 class Solution {
     /**
      * @param {number[]} nums
