@@ -1,3 +1,4 @@
+//  Naive solu tion O(m*n)^2
 class Solution {
     pacificAtlantic(heights) {
         const ROWS = heights.length;
