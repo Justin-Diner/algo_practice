@@ -46,3 +46,54 @@ class Solution {
         return grid;
     }
 }
+
+// Optimized solution O(m*n), no visited
+class Solution {
+    /**
+     * @param {number[][]} grid
+     */
+    islandsAndTreasure(grid) {
+        const ROWS = grid.length;
+        const COLS = grid[0].length;
+        const queue = [];
+        const directions = [
+            [1, 0],
+            [-1, 0],
+            [0, 1],
+            [0, -1]
+        ]
+        const INF = 2147483647;
+
+        for (let r = 0; r < ROWS; r++) {
+            for (let c = 0; c < COLS; c++) {
+                if (grid[r][c] === 0) {
+                    queue.push([r, c, 0]);
+                }
+            }
+        }
+
+        while (queue.length > 0) {
+            const [r, c, distance] = queue.shift();
+
+            for (let [dr, dc] of directions) {
+                let nr = r + dr;
+                let nc = c + dc;
+
+                if (
+                    nr < 0 ||
+                    nc < 0 ||
+                    nr >= ROWS ||
+                    nc >= COLS ||
+                    grid[nr][nc] !== INF
+                ) {
+                    continue;
+                }
+
+                grid[nr][nc] = distance + 1;
+                queue.push([nr, nc, distance + 1]);
+            }
+        }
+        return grid;
+    }
+}
+
