@@ -1,3 +1,5 @@
+// Time Complexity: O(E * (V + E))
+// Space Complexity: O(V + E)
 class Solution {
     /**
      * @param {number[][]} edges
@@ -32,5 +34,39 @@ class Solution {
                 return [nodeA, nodeB];
             }
         }
+    }
+}
+
+// Improved Solution:
+findRedundantConnection(edges) {
+    const adjList = new Map();
+
+    const dfs = (src, target, visited) => {
+        if (src === target) return true;
+        if (visited.has(src)) return false;
+
+        visited.add(src);
+
+        for (const neighbor of adjList.get(src) ?? []) {
+            if (dfs(neighbor, target, visited)) {
+                return true;
+            }
+        }
+
+        return false;
+    };
+
+    for (const [nodeA, nodeB] of edges) {
+        if (!adjList.has(nodeA)) adjList.set(nodeA, []);
+        if (!adjList.has(nodeB)) adjList.set(nodeB, []);
+
+        // If nodeA can already reach nodeB,
+        // adding nodeA-nodeB creates a cycle.
+        if (dfs(nodeA, nodeB, new Set())) {
+            return [nodeA, nodeB];
+        }
+
+        adjList.get(nodeA).push(nodeB);
+        adjList.get(nodeB).push(nodeA);
     }
 }
