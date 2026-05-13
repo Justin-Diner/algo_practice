@@ -1,4 +1,4 @@
-// Top Down DFS with memoization
+// Top Down DFS with memoization - O(n) Time and O(n) Space
 climbStairs(n) {
     const cache = new Map();
     const dfs = (i) => {
@@ -10,7 +10,7 @@ climbStairs(n) {
     }
     return dfs(0);
 }
-// Bottom Up Approach
+// Bottom Up Approach Space Optimzied O(n) Time and O(1) Space
 climbStairs(n) {
     const answer = [0, 1]
 
